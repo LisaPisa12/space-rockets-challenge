@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { MapPin, Navigation } from "react-feather";
 import {
@@ -16,11 +16,12 @@ import {
   Stack,
   AspectRatioBox,
 } from "@chakra-ui/core";
-
 import { useSpaceX } from "../utils/use-space-x";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import { LaunchItem } from "./launches";
+import { GlobalContext } from "../Context/GlobalState";
+import FavoritesButton from "./favoritesButton";
 
 export default function LaunchPad() {
   let { launchPadId } = useParams();
@@ -52,11 +53,13 @@ export default function LaunchPad() {
         ]}
       />
       <Header launchPad={launchPad} />
+
       <Box m={[3, 6]}>
         <LocationAndVehicles launchPad={launchPad} />
         <Text color="gray.700" fontSize={["md", null, "lg"]} my="8">
           {launchPad.details}
         </Text>
+
         <Map location={launchPad.location} />
         <RecentLaunches launches={launches} />
       </Box>
@@ -68,6 +71,14 @@ const randomColor = (start = 200, end = 250) =>
   `hsl(${start + end * Math.random()}, 80%, 90%)`;
 
 function Header({ launchPad }) {
+  const { favoriteLaunchPads } = useContext(GlobalContext);
+
+  const savedLaunchPad = favoriteLaunchPads.find(
+    (item) => item.id === launchPad.id
+  );
+
+  const disableAdd = savedLaunchPad ? true : false;
+
   return (
     <Flex
       background={`linear-gradient(${randomColor()}, ${randomColor()})`}
@@ -105,6 +116,11 @@ function Header({ launchPad }) {
             Retired
           </Badge>
         )}
+        <FavoritesButton
+          type="launchPad"
+          item={launchPad}
+          disableAdd={disableAdd}
+        />
       </Stack>
     </Flex>
   );

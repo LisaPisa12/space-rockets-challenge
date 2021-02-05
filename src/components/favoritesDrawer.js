@@ -45,10 +45,10 @@ export default function DrawerExample() {
         <DrawerOverlay>
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader>Favorites</DrawerHeader>
+            <DrawerHeader>My Favorites</DrawerHeader>
 
             <DrawerBody>
-              <Box>
+              <Box mb={4}>
                 <Heading>{`Launches(${favoriteLaunches.length})`}</Heading>
               </Box>
               {favoriteLaunches.length > 0
@@ -63,7 +63,7 @@ export default function DrawerExample() {
                     );
                   })
                 : ""}
-              <Box>
+              <Box mt={10} mb={4}>
                 <Heading>{`Launchpads(${favoriteLaunchPads.length})`}</Heading>
               </Box>
               {favoriteLaunchPads.length > 0

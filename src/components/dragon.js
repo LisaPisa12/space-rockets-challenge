@@ -23,7 +23,7 @@ import {
 import { Tooltip } from "@chakra-ui/react";
 
 import { useSpaceX } from "../utils/use-space-x";
-import { formatDateTime, launcLocalTime } from "../utils/format-date";
+import { formatDragonLaunchDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 
@@ -52,7 +52,7 @@ export default function Dragon() {
       <Header dragon={dragon} />
       <Box m={[3, 6]}>
         <TimeAndLocation dragon={dragon} />
-        <RocketInfo dragon={dragon} />
+        <CapsuleInfo dragon={dragon} />
         <Text color="gray.700" fontSize={["md", null, "lg"]} my="8">
           {dragon.description}
         </Text>
@@ -115,14 +115,16 @@ function TimeAndLocation({ dragon }) {
             Launch Date
           </Box>
         </StatLabel>
-        <StatNumber fontSize={["md", "xl"]}>{dragon.first_flight}</StatNumber>
+        <StatNumber fontSize={["md", "xl"]}>
+          {formatDragonLaunchDate(dragon.first_flight)}
+        </StatNumber>
         <StatHelpText>{timeAgo(dragon.first_flight)}</StatHelpText>
       </Stat>
     </SimpleGrid>
   );
 }
 
-function RocketInfo({ dragon }) {
+function CapsuleInfo({ dragon }) {
   return (
     <SimpleGrid
       columns={[1, 1, 2]}
@@ -135,14 +137,14 @@ function RocketInfo({ dragon }) {
         <StatLabel display="flex">
           <Box as={Navigation} width="1em" />{" "}
           <Box ml="2" as="span">
-            Rocket
+            Capsule
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>{dragon.name}</StatNumber>
       </Stat>
 
       <Stat>
-        <StatLabel display="flex">
+        <StatLabel display="flex" direction="column">
           <Box as={Tool} width="1em" />
           <Box ml="2" as="span">
             Heat Shield

@@ -1,16 +1,24 @@
 import React, { useContext } from "react";
-import { Badge, Box, Image, SimpleGrid, Text, Flex } from "@chakra-ui/core";
+import {
+  Badge,
+  Box,
+  Image,
+  SimpleGrid,
+  Text,
+  Flex,
+  Stat,
+  StatLabel,
+  StatNumber,
+  Stack,
+} from "@chakra-ui/core";
 import { formatDragonLaunchDate } from "../utils/format-date";
 import { Link } from "react-router-dom";
+import { Watch } from "react-feather";
 
 import { useSpaceXPaginated } from "../utils/use-space-x";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { IconButton } from "@chakra-ui/react";
-import { GlobalContext } from "../Context/GlobalState";
-import { Tooltip } from "@chakra-ui/react";
 
 const PAGE_SIZE = 12;
 
@@ -64,6 +72,15 @@ export function DragonItem({ dragon }) {
 
       <Box p="6">
         <Box d="flex" alignItems="baseline">
+          {dragon.active ? (
+            <Badge px="2" variant="solid" variantColor="green">
+              Successful
+            </Badge>
+          ) : (
+            <Badge px="2" variant="solid" variantColor="red">
+              Failed
+            </Badge>
+          )}
           <Box
             color="gray.500"
             fontWeight="semibold"
@@ -72,7 +89,7 @@ export function DragonItem({ dragon }) {
             textTransform="uppercase"
             ml="2"
           >
-            {dragon.name}
+            {dragon.name} &bull; {dragon.type}
           </Box>
         </Box>
 
@@ -82,20 +99,14 @@ export function DragonItem({ dragon }) {
           as="h4"
           lineHeight="tight"
           isTruncated
-          display="flex"
-          justifyContent="space-between"
         >
           {dragon.name}
-          {dragon.active ? (
-            <Badge px="2" variant="solid" variantColor="green">
-              Active
-            </Badge>
-          ) : (
-            <Badge px="2" variant="solid" variantColor="red">
-              Not Active
-            </Badge>
-          )}
         </Box>
+        <Flex>
+          <Text fontSize="sm">
+            {formatDragonLaunchDate(dragon.first_flight)}
+          </Text>
+        </Flex>
       </Box>
     </Box>
   );

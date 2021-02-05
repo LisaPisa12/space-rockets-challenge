@@ -7,8 +7,8 @@ import Launch from "./launch";
 import Home from "./home";
 import LaunchPads from "./launch-pads";
 import LaunchPad from "./launch-pad";
-import GlobalProvider from "../Context/GlobalState";
 import FavoritesDrawer from "./favoritesDrawer";
+import GlobalProvider from "../Context/GlobalState";
 
 export default function App() {
   return (
@@ -44,9 +44,11 @@ function NavBar() {
         fontWeight="bold"
         fontSize="lg"
         as={Link}
+        to="/"
       >
         ¡SPACE·R0CKETS!
       </Text>
+
       <FavoritesDrawer />
     </Flex>
   );

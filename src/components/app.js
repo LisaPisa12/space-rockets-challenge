@@ -8,6 +8,8 @@ import Home from "./home";
 import LaunchPads from "./launch-pads";
 import LaunchPad from "./launch-pad";
 import FavoritesDrawer from "./favoritesDrawer";
+import Dragons from "./dragons";
+import Dragon from "./dragon";
 import GlobalProvider from "../Context/GlobalState";
 
 export default function App() {
@@ -21,6 +23,8 @@ export default function App() {
           <Route path="/launches/:launchId" element={<Launch />} />
           <Route path="/launch-pads" element={<LaunchPads />} />
           <Route path="/launch-pads/:launchPadId" element={<LaunchPad />} />
+          <Route path="/dragons" element={<Dragons />} />
+          <Route path="/dragons/:dragonId" element={<Dragon />} />
         </Routes>
       </ChakraProvider>
     </GlobalProvider>

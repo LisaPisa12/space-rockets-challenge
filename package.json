@@ -10,15 +10,15 @@
   "dependencies": {
     "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/icons": "^1.0.4",
+    "@chakra-ui/react": "^1.2.1",
     "@chakra-ui/tooltip": "^1.1.0",
     "@emotion/core": "^10.0.35",
+    "@emotion/react": "^11.1.4",
     "@emotion/styled": "^10.0.27",
     "emotion-theming": "^10.0.27",
-
     "framer-motion": "^3.3.0",
-
+    "history": "^5.0.0",
     "luxon": "^1.25.0",
-
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",

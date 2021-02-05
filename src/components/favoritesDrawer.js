@@ -48,42 +48,39 @@ export default function DrawerExample() {
             <DrawerHeader>Favorites</DrawerHeader>
 
             <DrawerBody>
-              {favoriteLaunches.length > 0 ? (
-                favoriteLaunches.map((launch) => {
-                  const savedLaunchPad = favoriteLaunches.find(
-                    (item) => item.id === launch.id
-                  );
+              <Box>
+                <Heading>{`Launches(${favoriteLaunches.length})`}</Heading>
+              </Box>
+              {favoriteLaunches.length > 0
+                ? favoriteLaunches.map((launch) => {
+                    const savedLaunchPad = favoriteLaunches.find(
+                      (item) => item.id === launch.id
+                    );
 
-                  const disableAdd = savedLaunchPad ? true : false;
-                  return <LaunchItem launch={launch} isDisabled={disableAdd} />;
-                })
-              ) : (
-                <Box>
-                  <Heading>{`Launches(${favoriteLaunches.length})`}</Heading>
-                </Box>
-              )}
+                    const disableAdd = savedLaunchPad ? true : false;
+                    return (
+                      <LaunchItem launch={launch} isDisabled={disableAdd} />
+                    );
+                  })
+                : ""}
+              <Box>
+                <Heading>{`Launchpads(${favoriteLaunchPads.length})`}</Heading>
+              </Box>
+              {favoriteLaunchPads.length > 0
+                ? favoriteLaunchPads.map((launchPad) => {
+                    const savedLaunchPad = favoriteLaunchPads.find(
+                      (item) => item.id === launchPad.id
+                    );
 
-              {favoriteLaunchPads.length > 0 ? (
-                favoriteLaunchPads.map((launchPad) => {
-                  const savedLaunchPad = favoriteLaunchPads.find(
-                    (item) => item.id === launchPad.id
-                  );
-
-                  const disableAdd = savedLaunchPad ? true : false;
-                  return (
-                    <LaunchPadItem
-                      launchPad={launchPad}
-                      isDisabled={disableAdd}
-                    />
-                  );
-                })
-              ) : (
-                <Box>
-                  <Heading>
-                    {`Launchpads(${favoriteLaunchPads.length})`}
-                  </Heading>
-                </Box>
-              )}
+                    const disableAdd = savedLaunchPad ? true : false;
+                    return (
+                      <LaunchPadItem
+                        launchPad={launchPad}
+                        isDisabled={disableAdd}
+                      />
+                    );
+                  })
+                : ""}
             </DrawerBody>
           </DrawerContent>
         </DrawerOverlay>

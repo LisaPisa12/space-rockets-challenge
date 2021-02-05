@@ -1,7 +1,7 @@
 import React from "react";
-import { useParams, Link as RouterLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { format as timeAgo } from "timeago.js";
-import { Watch, MapPin, Navigation, Layers, Tool } from "react-feather";
+import { Watch, Navigation, Tool } from "react-feather";
 import {
   Flex,
   Heading,
@@ -15,15 +15,13 @@ import {
   Text,
   Spinner,
   Image,
-  Link,
   Stack,
-  AspectRatioBox,
-  StatGroup,
 } from "@chakra-ui/core";
-import { Tooltip } from "@chakra-ui/react";
 
 import { useSpaceX } from "../utils/use-space-x";
+
 import { formatDragonLaunchDate } from "../utils/format-date";
+
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 

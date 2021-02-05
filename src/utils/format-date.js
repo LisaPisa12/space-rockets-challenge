@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 export function formatDate(timestamp) {
   return new Intl.DateTimeFormat("en-US", {
     weekday: "long",
@@ -17,4 +19,10 @@ export function formatDateTime(timestamp) {
     second: "numeric",
     timeZoneName: "short",
   }).format(new Date(timestamp));
+}
+
+export function launcLocalTime(timestamp) {
+  let timeDate = DateTime.fromISO(timestamp, { setZone: true });
+
+  return `${timeDate.monthLong} ${timeDate.day}, ${timeDate.year} ${timeDate.hour}:${timeDate.minute} ${timeDate.zoneName}`;
 }

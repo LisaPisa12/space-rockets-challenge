@@ -26,3 +26,8 @@ export function launcLocalTime(timestamp) {
 
   return `${timeDate.monthLong} ${timeDate.day}, ${timeDate.year} ${timeDate.hour}:${timeDate.minute} ${timeDate.zoneName}`;
 }
+
+export function formatDragonLaunchDate(date) {
+  let dateFormated = new Date(date);
+  return dateFormated.toDateString();
+}

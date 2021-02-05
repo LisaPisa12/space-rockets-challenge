@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, Link as RouterLink } from "react-router-dom";
 import { format as timeAgo } from "timeago.js";
 import { Watch, MapPin, Navigation, Layers } from "react-feather";
@@ -20,9 +20,11 @@ import {
   AspectRatioBox,
   StatGroup,
 } from "@chakra-ui/core";
-
+import { Tooltip } from "@chakra-ui/react";
+import { GlobalContext } from "../Context/GlobalState";
+import FavoritesButton from "./favoritesButton";
 import { useSpaceX } from "../utils/use-space-x";
-import { formatDateTime } from "../utils/format-date";
+import { formatDateTime, launcLocalTime } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 
@@ -63,6 +65,11 @@ export default function Launch() {
 }
 
 function Header({ launch }) {
+  const { favoriteLaunches } = useContext(GlobalContext);
+
+  const savedLaunch = favoriteLaunches.find((item) => item.id === launch.id);
+
+  const disableAdd = savedLaunch ? true : false;
   return (
     <Flex
       bgImage={`url(${launch.links.flickr_images[0]})`}
@@ -108,6 +115,7 @@ function Header({ launch }) {
             Failed
           </Badge>
         )}
+        <FavoritesButton type="launch" item={launch} disableAdd={disableAdd} />
       </Stack>
     </Flex>
   );
@@ -116,18 +124,23 @@ function Header({ launch }) {
 function TimeAndLocation({ launch }) {
   return (
     <SimpleGrid columns={[1, 1, 2]} borderWidth="1px" p="4" borderRadius="md">
-      <Stat>
-        <StatLabel display="flex">
-          <Box as={Watch} width="1em" />{" "}
-          <Box ml="2" as="span">
-            Launch Date
-          </Box>
-        </StatLabel>
-        <StatNumber fontSize={["md", "xl"]}>
-          {formatDateTime(launch.launch_date_local)}
-        </StatNumber>
-        <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
-      </Stat>
+      <Tooltip
+        label={`Your Local Time: ${formatDateTime(launch.launch_date_local)}`}
+        placement="top"
+      >
+        <Stat>
+          <StatLabel display="flex">
+            <Box as={Watch} width="1em" />{" "}
+            <Box ml="2" as="span">
+              Launch Date
+            </Box>
+          </StatLabel>
+          <StatNumber fontSize={["md", "xl"]}>
+            {launcLocalTime(launch.launch_date_local)}
+          </StatNumber>
+          <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
+        </Stat>
+      </Tooltip>
       <Stat>
         <StatLabel display="flex">
           <Box as={MapPin} width="1em" />{" "}

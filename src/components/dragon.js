@@ -144,14 +144,14 @@ function CapsuleInfo({ dragon }) {
       </Stat>
 
       <Stat>
-        <StatLabel display="flex" direction="column">
+        <StatLabel display="flex">
           <Box as={Tool} width="1em" />
           <Box ml="2" as="span">
             Heat Shield
           </Box>
-          <StatNumber>{dragon.heat_shield.size_meters}</StatNumber>
-          <StatHelpText>Material: {dragon.heat_shield.material}</StatHelpText>
         </StatLabel>
+        <StatHelpText>Size: {dragon.heat_shield.size_meters}</StatHelpText>
+        <StatHelpText>Material: {dragon.heat_shield.material}</StatHelpText>
       </Stat>
     </SimpleGrid>
   );

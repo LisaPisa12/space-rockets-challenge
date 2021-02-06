@@ -2,9 +2,13 @@
 
 # ¡Space·Rockets! app
 
-### [👉 Go to the challenge 👈](./CHALLENGE.md)
-
 ### [🚀 See this version deployed here 🚀](https://space-rockets-challenge-delta.vercel.app/)
+
+## Tasks done
+
+- Feature 1 - Time Bug Fix
+- Feature 2 - Favorites Drawer added
+- Feature 3 - Added Browsing to Dragons, Link on Home logo to Home and testing to Home Component.
 
 ## Develop
 

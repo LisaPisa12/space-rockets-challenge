@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
-//import { toBeInTheDocument } from "@testing-library/jest-dom";
 import Home from "../components/home";
 
 describe("Home", () => {

@@ -115,7 +115,13 @@ function Header({ launch }) {
             Failed
           </Badge>
         )}
-        <FavoritesButton type="launch" item={launch} disableAdd={disableAdd} />
+        <Box ml={10}>
+          <FavoritesButton
+            type="launch"
+            item={launch}
+            disableAdd={disableAdd}
+          />
+        </Box>
       </Stack>
     </Flex>
   );

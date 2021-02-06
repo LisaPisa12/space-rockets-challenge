@@ -10,9 +10,6 @@ import LoadMoreButton from "./load-more-button";
 
 import { GlobalContext } from "../Context/GlobalState";
 
-
-
-
 import FavoritesButton from "../components/favoritesButton";
 
 const PAGE_SIZE = 12;

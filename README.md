@@ -4,7 +4,7 @@
 
 ### [👉 Go to the challenge 👈](./CHALLENGE.md)
 
-### [🚀 See the app in action 🚀](https://spacerockets.netlify.app)
+### [🚀 See this version deployed here 🚀](https://space-rockets-challenge-delta.vercel.app/)
 
 ## Develop
 

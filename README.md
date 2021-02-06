@@ -9,6 +9,7 @@
 - Feature 1 - Time Bug Fix
 - Feature 2 - Favorites Drawer added
 - Feature 3 - Added Browsing to Dragons, Link on Home logo to Home and testing to Home Component.
+- Deployed on vercel
 
 ## Develop
 

@@ -116,11 +116,13 @@ function Header({ launchPad }) {
             Retired
           </Badge>
         )}
-        <FavoritesButton
-          type="launchPad"
-          item={launchPad}
-          disableAdd={disableAdd}
-        />
+        <Box ml={10}>
+          <FavoritesButton
+            type="launchPad"
+            item={launchPad}
+            disableAdd={disableAdd}
+          />
+        </Box>
       </Stack>
     </Flex>
   );
